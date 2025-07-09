@@ -6,7 +6,6 @@ class ChatBot {
         this.sendButton = document.getElementById('send-button');
         this.jobList = document.getElementById('job-list');
         this.initEvents();
-        this.addBotMessage("Hi! I'm your Job Assistant. How can I help you today?");
     }
 
     initEvents() {
