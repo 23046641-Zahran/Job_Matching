@@ -1,6 +1,6 @@
-# SkillLink - AI-Powered Job Matcher
+# Job Assistant - AI-Powered Job Matcher
 
-SkillLink is a mobile-first AI-powered job matching platform that connects polytechnic students and graduates to skilled jobs based on location and skills.
+Job Assistant is a mobile-first AI-powered job matching platform that connects polytechnic students and graduates to skilled jobs based on location and skills.
 
 ## Features
 
