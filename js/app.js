@@ -1,20 +1,4 @@
-// Sample job data (to be replaced with real API data)
-const sampleJobs = [
-    {
-        title: 'Junior Software Developer',
-        company: 'TechCorp',
-        location: 'Singapore',
-        skills: ['JavaScript', 'HTML', 'CSS', 'React'],
-        description: 'Entry-level position for passionate developers...'
-    },
-    {
-        title: 'Digital Marketing Assistant',
-        company: 'MediaHub',
-        location: 'Singapore',
-        skills: ['Social Media', 'Content Creation', 'Analytics'],
-        description: 'Join our dynamic marketing team...'
-    }
-];
+// ...dummy job data removed. All job matching handled by HuggingFace chatbot...
 
 // Chat functionality
 class ChatBot {
@@ -38,7 +22,7 @@ class ChatBot {
         });
 
         // Initial greeting
-        this.addBotMessage('Hi! I\'m your SkillLink assistant. Tell me about your skills and what kind of job you\'re looking for.');
+        this.addBotMessage('Hi! I\'m your SkillLink assistant. How can I help you today?');
     }
 
     handleUserInput() {
@@ -70,40 +54,29 @@ class ChatBot {
         this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
     }
 
-    processUserInput(message) {
-        // Simulate AI processing time
-        setTimeout(() => {
-            // Simple keyword matching (to be replaced with AI processing)
-            const keywords = message.toLowerCase().split(' ');
-            const matches = this.findJobMatches(keywords);
-            
-            if (matches.length > 0) {
-                this.addBotMessage('I found some jobs that might interest you:');
-                this.displayJobMatches(matches);
-            } else {
-                this.addBotMessage('Could you tell me more about your specific skills or the type of role you\'re looking for?');
+    async processUserInput(message) {
+        // Call HuggingFace Flowise API for chatbot response
+        this.addBotMessage('Thinking...');
+        try {
+            const result = await query({ question: message });
+            // Remove the 'Thinking...' message
+            const lastBotMsg = this.chatMessages.querySelector('.bot-message:last-child');
+            if (lastBotMsg && lastBotMsg.textContent === 'Thinking...') {
+                lastBotMsg.remove();
             }
-        }, 1000);
-    }
-
-    findJobMatches(keywords) {
-        return sampleJobs.filter(job => {
-            const jobText = `${job.title} ${job.company} ${job.location} ${job.skills.join(' ')} ${job.description}`.toLowerCase();
-            return keywords.some(keyword => jobText.includes(keyword));
-        });
-    }
-
-    displayJobMatches(jobs) {
-        document.querySelector('.job-matches').classList.remove('hidden');
-        this.jobList.innerHTML = jobs.map(job => `
-            <div class="job-card">
-                <h3>${job.title}</h3>
-                <p><strong>Company:</strong> ${job.company}</p>
-                <p><strong>Location:</strong> ${job.location}</p>
-                <p><strong>Required Skills:</strong> ${job.skills.join(', ')}</p>
-                <p>${job.description}</p>
-            </div>
-        `).join('');
+            if (result && result.text) {
+                this.addBotMessage(result.text);
+            } else {
+                this.addBotMessage('Sorry, I could not get a response.');
+            }
+        } catch (err) {
+            // Remove the 'Thinking...' message
+            const lastBotMsg = this.chatMessages.querySelector('.bot-message:last-child');
+            if (lastBotMsg && lastBotMsg.textContent === 'Thinking...') {
+                lastBotMsg.remove();
+            }
+            this.addBotMessage('Sorry, there was an error connecting to the AI.');
+        }
     }
 }
 
