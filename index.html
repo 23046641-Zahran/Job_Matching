@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillLink - AI-Powered Job Matcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+<body>
+    <div class="container">
+        <header class="site-header">
+            <div class="logo-container">
+                <i class="fas fa-link logo-icon"></i>
+                <h1>SkillLink</h1>
+            </div>
+            <p class="tagline">AI-Powered Job Matching for Poly Students and Graduates</p>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>1000+ Jobs</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>500+ Graduates</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-handshake"></i>
+                    <span>80% Match Rate</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="chat-container">
+                <div class="chat-header">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Career Assistant</span>
+                </div>
+                <div id="chat-messages" class="chat-messages"></div>
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <textarea id="user-input" placeholder="Tell me about your skills and interests..."></textarea>
+                        <button id="send-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="chat-suggestions">
+                        <button class="suggestion-chip">Find internships</button>
+                        <button class="suggestion-chip">Career advice</button>
+                        <button class="suggestion-chip">Resume tips</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="job-matches hidden">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Your Job Matches</h2>
+                    <div class="filter-container">
+                        <button class="filter-button">
+                            <i class="fas fa-filter"></i> Filter
+                        </button>
+                    </div>
+                </div>
+                <div id="job-list"></div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SkillLink</h3>
+                    <p>Connecting talent with opportunity</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Success Stories</a>
+                    <a href="#">For Employers</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SkillLink. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Serve Project",
+            "type": "shell",
+            "command": "code --install-extension ritwickdey.liveserver && echo 'Live Server extension installed. Right-click on index.html and select \"Open with Live Server\" to start the development server.'",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
