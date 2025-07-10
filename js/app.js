@@ -37,24 +37,19 @@ class ChatBot {
     addBotMessage(message) {
         const msgDiv = document.createElement('div');
         msgDiv.className = 'message bot-message';
-        // If message contains line breaks or numbered/list items, render as bullet points
-        if (typeof message === 'string' && (message.includes('\n') || message.includes('- ') || message.includes('* '))) {
+        // Always display each line as a bullet point
+        if (typeof message === 'string') {
             const lines = message.split(/\r?\n/).filter(line => line.trim() !== '');
-            // If most lines look like list items, render as <ul>
-            const isList = lines.filter(line => /^[-*•]\s+/.test(line) || /^\d+\./.test(line)).length > 0;
-            if (isList) {
+            if (lines.length > 1) {
                 const ul = document.createElement('ul');
                 lines.forEach(line => {
-                    // Remove bullet/number prefix for display
-                    const clean = line.replace(/^[-*•]\s+/, '').replace(/^\d+\.\s*/, '');
                     const li = document.createElement('li');
-                    li.textContent = clean;
+                    li.textContent = line.trim();
                     ul.appendChild(li);
                 });
                 msgDiv.appendChild(ul);
             } else {
-                // Otherwise, just join with <br>
-                msgDiv.innerHTML = lines.join('<br>');
+                msgDiv.textContent = message;
             }
         } else {
             msgDiv.textContent = message;
